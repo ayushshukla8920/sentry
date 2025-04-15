@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zentry - Explorer</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="header">
+    <h1 class="heading">Zentry</h1>
+  </div>
+
+  <div class="main">
+    <div class="container">
+      <!-- Folder Tree Sidebar -->
+      <div class="sidebar" id="folderTree">
+        <!-- Tree will be injected here -->
+      </div>
+
+      <!-- File Grid -->
+      <div class="content">
+        <div class="toolbar">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <button onclick="goBack()" id="backBtn" disabled>⬅ Back</button>
+            <div id="currentPath" class="path-bar">Home</div>
+          </div>
+          <button onclick="handleUpload()">Upload File</button>
+        </div>              
+        <div class="file-grid" id="fileGrid">
+          <!-- File tiles dynamically injected -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Preview Modal -->
+  <div id="previewModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePreview()">&times;</span>
+      <div id="previewContent">Loading...</div>
+    </div>
+  </div>
+
+  <script src="../renderer.js"></script>
+</body>
+
+</html>
