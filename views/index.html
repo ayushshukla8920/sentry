@@ -13,23 +13,23 @@
   <div class="header">
     <h1 class="heading">Zentry</h1>
   </div>
-
   <div class="main">
     <div class="container">
-      <!-- Folder Tree Sidebar -->
       <div class="sidebar" id="folderTree">
-        <!-- Tree will be injected here -->
       </div>
-
-      <!-- File Grid -->
       <div class="content">
         <div class="toolbar">
           <div style="display: flex; align-items: center; gap: 10px;">
-            <button onclick="goBack()" id="backBtn" disabled>⬅ Back</button>
             <div id="currentPath" class="path-bar">Home</div>
           </div>
-          <button onclick="handleUpload()">Upload File</button>
-        </div>              
+
+          <div class="toolbar-actions">
+            <input type="file" id="fileInput" style="display: none;" onchange="uploadFile()" />
+            <button onclick="triggerFileInput()">📤 Upload</button>
+            <button onclick="createFolder()">📁 New Folder</button>
+            <button onclick="deleteSelected()">🗑️ Delete</button>
+          </div>
+        </div>
         <div class="file-grid" id="fileGrid">
           <!-- File tiles dynamically injected -->
         </div>
@@ -43,6 +43,16 @@
       <div id="previewContent">Loading...</div>
     </div>
   </div>
+  <!-- New Folder Modal -->
+  <div id="newFolderModal" class="modal">
+    <div class="modalcontent">
+      <span class="close-btn" onclick="closeFolderModal()">&times;</span>
+      <h3>Create New Folder</h3>
+      <input type="text" id="folderNameInput" placeholder="Folder name" />
+      <button onclick="confirmCreateFolder()">Create</button>
+    </div>
+  </div>
+
 
   <script src="../renderer.js"></script>
 </body>
