@@ -10,8 +10,14 @@
 </head>
 
 <body>
-  <div class="header">
+  <div style="display: flex; align-items: center; justify-content: space-between;" class="header">
     <h1 class="heading">Zentry</h1>
+    <div class="toolbar-actions">
+      <input type="file" id="fileInput" style="display: none;" onchange="uploadFile()" />
+      <button onclick="triggerFileInput()">Upload</button>
+      <button onclick="createFolder()">New Folder</button>
+      <button onclick="deleteSelected()">Delete</button>
+    </div>
   </div>
   <div class="main">
     <div class="container">
@@ -19,17 +25,11 @@
       </div>
       <div class="content">
         <div class="toolbar">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div id="currentPath" class="path-bar">Home</div>
+          <div style="display: flex; gap: 10px;">
+            <button id="backBtn" class="back-button" onclick="goBackOneLevel()"><i class="fas fa-arrow-left" style="margin-right: 6px;"></i></button>
+            <div id="currentPath" class="path-bar"></div>
           </div>
-
-          <div class="toolbar-actions">
-            <input type="file" id="fileInput" style="display: none;" onchange="uploadFile()" />
-            <button onclick="triggerFileInput()">📤 Upload</button>
-            <button onclick="createFolder()">📁 New Folder</button>
-            <button onclick="deleteSelected()">🗑️ Delete</button>
-          </div>
-        </div>
+        </div>        
         <div class="file-grid" id="fileGrid">
           <!-- File tiles dynamically injected -->
         </div>
@@ -52,8 +52,11 @@
       <button onclick="confirmCreateFolder()">Create</button>
     </div>
   </div>
-
-
+  <div id="contextMenu" class="context-menu" style="display:none; position:absolute; z-index:1000; background:#333; border:1px solid #666; border-radius:5px; color:white; padding:8px 0; font-size:14px;">
+    <div class="context-item" onclick="contextDelete()">Delete</div>
+    <div class="context-item" onclick="contextRename()">Rename</div>
+    <div class="context-item" onclick="contextMetadata()">Info</div>
+  </div>
   <script src="../renderer.js"></script>
 </body>
 
